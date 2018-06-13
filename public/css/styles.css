@@ -4,3 +4,10 @@ margin left 3px
 .margin-l-10{
     margin-left: 10px;
 }
+
+/*
+min height content section
+ */
+.min-h-content{
+    min-height: 255px;
+}

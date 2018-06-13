@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Adminca bootstrap 4 &amp; angular 5 admin template | Datatables</title>
+    <title>CuentaFacil | Dashboard</title>
     <!-- GLOBAL MAINLY STYLES-->
     <link href="{{ asset('plugins/template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
@@ -110,8 +110,8 @@
                 <li class="breadcrumb-item">Datatables</li>
             </ol>
         </div>
-        <div class="page-content fade-in-up">
-            @yield('main-content')
+        <div class="page-content fade-in-up min-h-content">
+            @yield('main')
         </div>
         <!-- END PAGE CONTENT-->
         <footer class="page-footer">
@@ -134,32 +134,11 @@
 <script src="{{ asset('plugins/template/vendors/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('plugins/template/vendors/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 <!-- PAGE LEVEL PLUGINS-->
-<script src="{{ asset('plugins/template/vendors/dataTables/datatables.min.js') }}"></script>
+@yield('script-plugins')
 <!-- CORE SCRIPTS-->
 <script src="{{ asset('plugins/template/js/app.min.js') }}"></script>
 <!-- PAGE LEVEL SCRIPTS-->
-<script>
-    $(function() {
-        $('#datatable').DataTable({
-            pageLength: 10,
-            fixedHeader: true,
-            responsive: true,
-            "sDom": 'rtip',
-            columnDefs: [{
-                targets: 'no-sort',
-                orderable: false
-            }]
-        });
-
-        var table = $('#datatable').DataTable();
-        $('#key-search').on('keyup', function() {
-            table.search(this.value).draw();
-        });
-        $('#type-filter').on('change', function() {
-            table.column(4).search($(this).val()).draw();
-        });
-    });
-</script>
+@yield('script')
 </body>
 
 </html>
